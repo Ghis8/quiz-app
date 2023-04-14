@@ -120,7 +120,6 @@ const Content = ({create,take}) => {
   useEffect(()=>{
     getQuizzes()
   },[])
-  console.log('choosedQuiz=>',choosedQuiz)
   return (
     <>
       
@@ -129,13 +128,13 @@ const Content = ({create,take}) => {
           editQuestion ?(
             <div className='flex flex-col space-y-4 relative'>
               <AiOutlineArrowLeft onClick={()=>{
-                window.location.reload(true)
+                setTakeQuiz(false)
                 }} className=' cursor-pointer text-xl'/>
               <div className='flex items-center space-x-5'>
                   <span>{choosedQuiz.title}</span>
                   <FaTrash onClick={()=>{
                     deleteQuiz(choosedQuiz.id)
-                    window.location.reload(true)
+                    setTakeQuiz(false)
                     }} className='text-red-500 cursor-pointer hover:scale-125'/>
               </div>
               <span>{choosedQuiz.description}</span>
@@ -214,7 +213,7 @@ const Content = ({create,take}) => {
                           }
                           if(userAnswer && questionIndex < choosedQuiz.question_number) questionIndex+=1
                           console.log('question=>',questionIndex)
-                          }} className={selectedAnswer === userAnswer ?'py-2 px-2 rounded-full border mb-1 cursor-pointer w-2/4 ml-5 pl-5 bg-blue-400':'py-2 px-2 rounded-full border mb-1 cursor-pointer w-2/4 ml-5 pl-5 hover:bg-blue-200'}><span className='text-blue-400'>{i+1}</span>  {answer}</span>
+                          }} className='py-2 px-2 rounded-full border mb-1 cursor-pointer w-2/4 ml-5 pl-5 hover:bg-blue-200'><span className='text-blue-400'>{i+1}</span>  {answer}</span>
                         
                       </div>
                     ))

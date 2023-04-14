@@ -115,7 +115,7 @@ const Layout = ({children}) => {
     getQuizzes()
   },[])
   console.log('choosedQuiz=>',choosedQuiz)
-
+  
   return (
     <div className='h-screen'>
         <Nav take_Quiz={()=>setTakeQuiz(true)} create_Quiz={()=>setTakeQuiz(false)}/>
