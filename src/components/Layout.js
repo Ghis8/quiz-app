@@ -94,16 +94,6 @@ const Layout = ({children}) => {
     }
   }
   
-  const timerCount=()=>{
-    setInterval(()=>{
-     setTimeCounter(choosedQuiz?.time-1)
-     if(timeCounter === 0){
-      clearInterval(timerCount)
-      alert('you are running out of time')
-     }
-    },1000)
-  }
-  
   const updateQuiz=async(id)=>{
     const quizDoc=doc(db,'quiz',id)
      
@@ -177,7 +167,7 @@ const Layout = ({children}) => {
                       addAnswer &&(
                         <div className='flex flex-col space-y-5 w-1/4 py-2 px-4 border'>
                           <input type="text" placeholder='add answer' onChange={(e)=>setAddAnswer({...addAnswer,newAnswer:e})} className='border py-1 indent-1' />
-                          <button onClick={()=>updateAnswers(choosedQuiz.id)} className='py-1 px-2 bg-blue-500 text-white w-1/5 rounded-md'>Add</button>
+                          <button className='py-1 px-2 bg-blue-500 text-white w-1/5 rounded-md'>Add</button>
                         </div>
                           
                       )
